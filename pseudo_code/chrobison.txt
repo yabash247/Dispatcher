@@ -1,0 +1,58 @@
+
+GOAL : THIS CODE HELPS DRIVERS BID AND WIN LOADS BASED ON AVAILABILITY AND THEIR SPECIFIC SEARCH REQUIREMENTS 
+
+OTHERS: THIS IS CHROBISION LOAD BOARD WEBSITE
+
+*****************BOOK LOADS FOR DRIVER START *****************************************
+
+    IF (DRIVER NEEDS LOADS ? == true ) :*****
+
+        GROUP DIVER AVAILABITY
+        FOR EACH DRIVER AVAILABILITY_GROUP :
+
+            OPEN NEW WEB TAB 
+                SET LOAD SETTINGS IN WEBSITE PER DRIVER AVAILABILITY_GROUP
+
+                    SET REPEAT INTERVAL:
+                        IF (GROUP STILL HAS AN DRIVER AVALABILITY ? == true): 
+                            CLICK ON SEARCH RESULT(THIS REFRESHE'S THE LOAD RESULT PAGE)
+                            AFTER PAGE HAS LOADED :
+
+                            FOR EACH LOAD RESULT PAGE 
+
+                                FOR EACH ID IN AVALABILITY_GROUP :
+                                IF (ID STILL AVAILABE ? == true):
+
+                                    FOR EACH LOAD RESULT
+                                        IF (LOAD MATCHES AVAILABITY EXPECTATIONS ? == true):
+
+                                            IF (LOAD THAT MATCHES HAS BID BUTTON ? == true):
+                                                BID HIGHER THAN CURRENT PRICE 
+                                                    THEN ACCEPT LOAD.
+
+                                            ELSE 
+                                                SEND LOAD DETAILS AND CONTACT TO ADMIN.
+                                                
+                                            IF (LOAD WAS AWARDED TO DRIVER) 
+                                                CHANGE ID AVAILABITY STATUS TO FUFILLED
+                                                NOTIFY ADMIN / DRIVER 
+                            ELSE
+                                REMOVE GROUP FROM AVALABILITY LIST
+                                CLOSE TAB
+
+                                
+*****************BOOK LOADS FOR DRIVER ENDS ******************************************************                       
+
+
+
+
+
+                                    
+
+
+
+
+
+
+
+

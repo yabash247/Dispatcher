@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "CH ROBINSON HELPER",
+  "description": "Helps you in finding/wining Loads per your settings and availability",
+  "version": "1.0.0",
+  "location": {
+    "pickup_location": 77406,
+    "delivery_location": 77406
+  },
+  "PAY": {
+    "great": 700,
+    "good": 600,
+    "normal": 500,
+    "manage": 500
+  },
+  "TIME": [
+    {
+      "start": 6,
+      "close": 7,
+      "timezone": "CT",
+      "availability": {
+        "tuesday": "5_8",
+        "wednesday": "normal",
+        "thursday": "5_8",
+        "friday": "normal",
+        "sartuday": "normal",
+        "sunday": "normal"
+      },
+      "detention": 2
+    }
+  ],
+  "DEADHEAD": {
+    "close": 30,
+    "far": 65,
+    "verfar": 150
+  }
+}

@@ -1,0 +1,52 @@
+body{
+    background: #151919;        
+
+}
+
+.container{
+min-width: 315px;
+  min-height: fit-content;
+   display: flex;
+flex-direction: column;
+    align-items: center;
+     justify-content: space-between;
+}
+
+.btnsContainer{
+  width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 15px;
+}
+
+button {
+      height: 40px;
+      min-width: 100px;
+    cursor: pointer;
+    background-color: #E1235F;
+    border-radius: 5px;
+    border: none;
+    margin: auto 5px auto 5px;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+button:hover{
+background-color: #e1235fc5;
+
+}
+
+.disabledBtn{
+  cursor: not-allowed;
+  background-color: rgb(113, 113, 131);
+
+}
+
+
+
+
+  .extTitle{
+      padding: 9px;
+  }
+
