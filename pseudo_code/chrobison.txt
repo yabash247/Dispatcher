@@ -45,6 +45,16 @@ OTHERS: THIS IS CHROBISION LOAD BOARD WEBSITE
 
 
 
+FUNCTION GROUP_DIVER _AVAILABITY()
+    GET AVALABITY WITH NEAREST END TIME
+        GET ITS ZIP CODE
+    
+    
+        
+        
+        FOR EACH DRIVER AVAILABILITY_GROUP :
+
+            OPEN NEW WEB TAB 
 
 
                                     
