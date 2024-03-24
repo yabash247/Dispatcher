@@ -1,9 +1,9 @@
 
-GOAL : THIS CODE HELPS DRIVERS BID AND WIN LOADS BASED ON AVAILABILITY AND THEIR SPECIFIC SEARCH REQUIREMENTS 
+GOAL : THIS CODE HELPS DRIVERS BID AND WIN LOADS BASED ON THEIR AVAILABILITY AND THEIR SPECIFIC SEARCH REQUIREMENTS 
 
 OTHERS: THIS IS CHROBISION LOAD BOARD WEBSITE
 
-*****************BOOK LOADS FOR DRIVER START *****************************************
+***************** BOOK LOADS FOR DRIVER START *****************************************
 
     IF (DRIVER NEEDS LOADS ? == true ) :*****
 
@@ -45,6 +45,25 @@ OTHERS: THIS IS CHROBISION LOAD BOARD WEBSITE
 
 
 
+SEETINGS 
+
+   LOAD PAY BIDUP PERCENTAGE
+   (note - validation requirement: first > second > third)
+
+        {
+            FIRST_BIDUP : 0.1,
+            SECOND_BIDUP : 0.05,
+            THIRD_BIDUP : 0.025,
+            DRIVER_ID : 
+        }
+
+
+    DRIVER AVAILABILITY 
+        (would contain muliple data of the following keys)
+            start_date : 
+            end_time_date:
+            orign_location:
+            or
 
 
                                     
