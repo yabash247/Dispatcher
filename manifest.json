@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "CH ROBINSON HELPER",
-    "description": "Helps you in finding/wining Loads per your settings and availability",
+    "description": "Helps you in finding/wining Loads per your settings and availability, amazing!!!",
     "version": "1.0.0",
     "icons": {
       "16": "img/logo/chr.png"
@@ -12,7 +12,10 @@
     "content_scripts": [
       {
         "matches": ["https://www.navispherecarrier.com/*"], 
-        "js": ["js/main.js"],
+        "js": [
+          "js/jquery.js",
+          "js/main.js"
+      ],
         "run_at": "document_end"
             }
     ]

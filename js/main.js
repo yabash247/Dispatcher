@@ -5,37 +5,104 @@ var driverIsAvailabe = false;
 /* Search Settings Starts (should be gotten from database) */
 
 //Get driver availability schedule 
-const driverAvailability = [
-    "March 6, 2024 18:00:00 // March 8, 2024 24:00:00 // Open // 1 // 3456",
-    "March 9, 2024 18:00:00 // March 9, 2024 24:00:00 // Fufilled // 0 // id",
-    "March 5, 2024 18:00:00 // March 5, 2024 24:00:00 // Expired // 0 // id",
-    "March 10, 2024 18:00:00 // March 17, 2024 24:00:00 // Open // 2 // id"
+var driverAvailability = [
+    "March 6, 2024 18:00:00 // March 8, 2024 24:00:00 // Expired // 1",
+    "March 9, 2024 18:00:00 // March 9, 2024 24:00:00 // Fufilled // 2",
+    "March 5, 2024 18:00:00 // March 5, 2024 24:00:00 // Expired // 3",
+    "March 17, 2024 04:00:00 // March 18, 2024 18:00:00 // Open // 4"
 ];
 
-//Get search details per id, example formart
-const availabilitydata = {
-    id: 3456,
-    maxMillage: 156
-
+const loadSearchSetting = {
+    deadhead_near : 41,
+    deadhead_far : 60,
+    deadhead_vFar : 100,
+    milliage_near : 91,
+    milliage_far: 120,
+    milliage_vfar: 180
 }
+
     
 
 /* Search Settings Ends  */
 
+interval = setInterval(() => {
+    if (driverNeedsLoad() == true) {
+            
+        
+        
+        //Need to ensure page has fully and completely loaded before runing below
+        $(function() {
+        
+            driverAvailability.forEach(item => {
+                item = item.split(" // ");
+                if (item[2] === "Open") {
+                    //console.log(item[3]);
+                    //Get loadsResult 
+                    let loadsResult = document.querySelectorAll('div.find-loads-result');
+                    //console.log(loadsResult);
+                    loadsResult.forEach(list =>{
+                        //list.classList.add("selected");
+                        var milliage = list.childNodes[3].querySelectorAll('div.js-load-distance')[0].childNodes[1].innerText;
+                        milliage = parseInt(String(milliage).replace(' mi', ''));
+                        //console.log(milliage);
+                        let mill_Anlayized = millage_Analyzer(milliage);
+                        //console.log("Milliage is: "+mill_Anlayized);
+                        
+                        var deadhead_PU = list.childNodes[2].querySelectorAll('div.location-deadhead-group')[0].childNodes[2].childNodes[2].innerText;
+                        deadhead_PU = parseInt(String(deadhead_PU).replace(' mi', ''));
+                        //console.log(deadhead_PU);
+                        let DH_PU_Anlayized = deadhead_Analyzer(deadhead_PU);
+                        //console.log("Pickup deahhead is: "+DH_PU_Anlayized);
 
-if (driverNeedsLoad(driverAvailability) == true) {
+                        var deadhead_Del = list.childNodes[2].querySelectorAll('div.location-deadhead-group')[1].childNodes[2].childNodes[2].innerText;
+                        
+                        deadhead_Del = parseInt(String(deadhead_Del).replace(' mi', ''));
+                        let DH_DEL_Anlayized = deadhead_Analyzer(deadhead_Del);
+                        //console.log("Delivery deahhead is: "+DH_DEL_Anlayized);
 
- 
+                        
+                        let priceBox = list.childNodes[4].querySelectorAll('div.js-load-rate');
+                        //If book now option exists
+                        if (priceBox.length > 0) {
+                            let price = priceBox[0].childNodes[1].childNodes[0].innerText;
+                            price = parseInt(String(price).replace('.00 USD', ''));
+                            //console.log(price);
+                        }
+                        
 
-}
+                        if (DH_PU_Anlayized === "close" & mill_Anlayized === "close" & DH_DEL_Anlayized === "close") {
 
+                            //check if loading or offloading time is less than 2hrs each 
+                            //Check if pickup and drop off time works
+                                if (priceBox.length > 0) {
+                                    
+                                    if (price => 250) {
+                                        //deadhead_PU.click();
+                                        console.log("******************Pickup and delivery millage is close, system should bid on this ");
+                                    }
+                                }else{
+                                    console.log("you need to call and bid for this ASAP.");
+                                }
+                            
+                        }
+                        //list.classList.remove("selected"); 
+                    })
+                    
+                }
+            });
+
+            refreshSearch();
+           
+        });
+
+    }
+}, 0.4 * 60000);
 
 
 
 // fucntion Checks if driver needs load(s)
 function driverNeedsLoad() {
     if (driverIsAvailabe == false) {
-
         //get current time 
         let d = new Date();
         let currenTime = d.getTime();
@@ -74,22 +141,55 @@ function groupLoadSearch() {
 //const driverAvailabilitydata = [id=1, orign=77406, dest=77406, loadQuality='good', pickup='', delivery='25', ];
 // return driverAvailabilitydata;
 function getSearchDetails(id) {
-
+    
 }
 
 function setSearchDetails(id) {
 
 }
 
+
+function loadAnalyzer(){
+
+}
+
 function refreshSearch() {
      //Click on search button to refresh search results.
      const clickSearchBtn = document.querySelectorAll('button#btn-find-loads-search-submit')[0];
+     //console.log(clickSearchBtn);
      clickSearchBtn.click();
 }
 
 
+function deadhead_Analyzer(deadhead){
+    var result = "vfar"
+    if (loadSearchSetting.deadhead_near > deadhead ) {
+         result = "close";
+    }else if (loadSearchSetting.deadhead_near <= deadhead &  deadhead < loadSearchSetting.deadhead_far) {
+         result = "mid";
+    } else if (loadSearchSetting.deadhead_far <= deadhead &  deadhead <= loadSearchSetting.deadhead_vFar) {
+         result = "far";
+    } 
+    
+    return (result);
+}
 
+function millage_Analyzer(milliage){
+    var result = "vfar"
+    if (loadSearchSetting.milliage_near > milliage ) {
+         result = "close";
+    }else if (loadSearchSetting.milliage_near < milliage &  milliage < loadSearchSetting.milliage_far) {
+         result = "mid";
+    } else if (loadSearchSetting.milliage_far < milliage &  milliage < loadSearchSetting.milliage_vfar) {
+         result = "far";
+    } 
+    //console.log("drop off is: "+result);
+    return (result);
+}
 
+function bid4me(params) {
+    
+}
 
 /*
 
