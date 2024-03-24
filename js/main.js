@@ -12,13 +12,7 @@ const driverAvailability = [
     "March 10, 2024 18:00:00 // March 17, 2024 24:00:00 // Open // 2 // id"
 ];
 
-//Get search details per id, example formart
-const availabilitydata = {
-    id: 3456,
-    maxMillage: 156
 
-}
-    
 
 /* Search Settings Ends  */
 
