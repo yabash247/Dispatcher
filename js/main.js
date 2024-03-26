@@ -5,11 +5,36 @@ var driverIsAvailabe = false;
 /* Search Settings Starts (should be gotten from database) */
 
 //Get driver availability schedule 
-var driverAvailability = [
+var driverAvailability_A = [
     "March 6, 2024 18:00:00 // March 8, 2024 24:00:00 // Expired // 1",
     "March 9, 2024 18:00:00 // March 9, 2024 24:00:00 // Fufilled // 2",
     "March 5, 2024 18:00:00 // March 5, 2024 24:00:00 // Expired // 3",
-    "March 17, 2024 04:00:00 // March 18, 2024 18:00:00 // Open // 4"
+    "March 25, 2024 04:00:00 // March 30, 2024 18:00:00 // Open // 4"
+];
+
+let driverAvailability =  [
+    {
+        "id": 1,
+        "driver_id": 21,
+        "status": "open",
+        "origin": 77406,
+        "pickup_period_start": "March 26, 2024 4:00:00",
+        "pickup_period_end": "March 26, 2024 11:00:00",
+        "destination": 77406,
+        "del_period_start": "March 27, 2024 18:00:00",
+        "del_period_end": "March 27, 2024 20:00:00"
+    },
+    {
+        "id": 4,
+        "driver_id": 21,
+        "status": "open",
+        "origin": 77406,
+        "pickup_period_start": "April 1, 2024 4:00:00",
+        "pickup_period_end": "April 1, 2024 11:00:00",
+        "destination": 77406,
+        "del_period_start": "April 1, 2024 18:00:00",
+        "del_period_end": "April 1, 2024 20:00:00"
+    }
 ];
 
 const loadSearchSetting = {
@@ -18,7 +43,7 @@ const loadSearchSetting = {
     deadhead_vFar : 100,
     milliage_near : 91,
     milliage_far: 120,
-    milliage_vfar: 180
+    milliage_vfar: 180,
 }
 
     
@@ -26,6 +51,27 @@ const loadSearchSetting = {
 /* Search Settings Ends  */
 
 interval = setInterval(() => {
+
+    if (driverNeedsLoad() == true) {
+
+        //Need to ensure page has fully and completely loaded before runing below
+        $(function() {
+            driverAvailability.forEach(item => {
+                if (item.status === "open") {
+                    //Get loadsResult 
+                    let loadsResult = document.querySelectorAll('div.find-loads-result');
+                    loadsResult.forEach(list =>{
+                        //console.log(list);
+                        let offerPay = list.childNodes[4].querySelectorAll('div.js-load-rate')[0].childNodes[1];
+                        console.log(offerPay);
+                    })
+                }
+
+            });
+        });
+    }
+
+    /*
     if (driverNeedsLoad() == true) {
             
         
@@ -95,33 +141,33 @@ interval = setInterval(() => {
            
         });
 
-    }
-}, 0.4 * 60000);
+    }*/
 
+}, 0.4 * 60000);
 
 
 // fucntion Checks if driver needs load(s)
 function driverNeedsLoad() {
     if (driverIsAvailabe == false) {
+
         //get current time 
         let d = new Date();
         let currenTime = d.getTime();
 
-        // for each item in data, if item_time is > current time 
         driverAvailability.forEach(item => {
-            item = item.split(" // ");
-            if (item[2] === "Open") {
-                let endTime = Date.parse(item[1]);
+            if (item.status === "open") {
+                let endTime = Date.parse(item.pickup_period_start);
                 if (endTime >= currenTime) {
-                    //console.log(item);
+                    //console.log(item.id);
                     driverIsAvailabe = true;
                 }
             }
         });
 
-
-    } return driverIsAvailabe;
+    }return driverIsAvailabe;
 }
+
+
 
 
 //Need to group all driver availability that is open,

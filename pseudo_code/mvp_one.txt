@@ -1,0 +1,23 @@
+
+
+***************** MVP FOR MY PERSONAL USE *****************
+
+    IF (I NEED LOAD == true):
+
+        FOR EACH AVAILABILITY 
+
+            FOR EACH LOAD POSTED 
+
+                IF (ORIGIN_PICKUP_IS_CLOSE & DROP_OFF_IS_CLOSE & MILLAGE_IS_CLOSE & PAY_IS_280_OR_MORE & quality = "good")
+                    (IF PICKUP_TIME MATCHES SEETING)
+                        (IF PICKUP LOCATION ISN'T REDFLAGED FOR DELAY)
+                           (IF DROPOFF LOCATION ISN'T REDFLAGED FOR DELAY) 
+                                (IF DROPOFF TIME MATCHES SEETING)
+                                    (IF BID BUTTON AVAILABLE, BID)
+                                        (IF BIDDED KEEP CHECKING FOR RESONSE)
+                                            (IF RESPONSE, BID AGAIN AND WAIT FOR RESPONSE)
+                                                (IF RESPONSE AND PAY IS 300 OR GREATER)
+                                                    (ACCEPT BID)
+                ELSE IF
+
+
