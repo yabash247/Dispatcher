@@ -1,68 +1,173 @@
 
-GOAL : THIS CODE HELPS DRIVERS BID AND WIN LOADS BASED ON AVAILABILITY AND THEIR SPECIFIC SEARCH REQUIREMENTS 
+GOAL : THIS CODE HELPS DRIVERS BID AND WIN LOADS BASED ON THEIR AVAILABILITY AND THEIR SPECIFIC SEARCH REQUIREMENTS 
 
 OTHERS: THIS IS CHROBISION LOAD BOARD WEBSITE
 
-*****************BOOK LOADS FOR DRIVER START *****************************************
+***************** BOOK LOADS FOR DRIVER START ************************************
 
-    IF (DRIVER NEEDS LOADS ? == true ) :*****
+    
+    IF (DRIVER NEEDS LOADS ? == true ) : *
 
-        GROUP DIVER AVAILABITY
-        FOR EACH DRIVER AVAILABILITY_GROUP :
+        GROUP DIVER AVAILABITY ``
+            FOR EACH DRIVER AVAILABILITY_GROUP :
 
-            OPEN NEW WEB TAB 
-                SET LOAD SETTINGS IN WEBSITE PER DRIVER AVAILABILITY_GROUP
+                OPEN NEW WEB TAB 
+                    SET LOAD SETTINGS IN WEBSITE PER DRIVER AVAILABILITY_GROUP
 
-                    SET REPEAT INTERVAL:
-                        IF (GROUP STILL HAS AN DRIVER AVALABILITY ? == true): 
-                            CLICK ON SEARCH RESULT(THIS REFRESHE'S THE LOAD RESULT PAGE)
-                            AFTER PAGE HAS LOADED :
+                        SET REPEAT INTERVAL:
+                            IF (GROUP STILL HAS A DRIVER AVALABILITY ? == true): 
+                                CLICK ON SEARCH RESULT(THIS REFRESHES'S THE LOAD RESULT PAGE)
+                                AFTER PAGE HAS LOADED :
 
-                            FOR EACH LOAD RESULT PAGE 
+                                    FOR EACH LOAD RESULT PAGE 
 
-                                FOR EACH ID IN AVALABILITY_GROUP :
-                                IF (ID STILL AVAILABE ? == true):
+                                        FOR EACH ID IN AVALABILITY_GROUP :
+                                        IF (ID STILL AVAILABE ? == true):
 
-                                    FOR EACH LOAD RESULT
-                                        IF (LOAD MATCHES AVAILABITY EXPECTATIONS ? == true):
+                                            FOR EACH LOAD RESULT
+                                                IF (LOAD MATCHES AVAILABITY EXPECTATIONS ? == true):
 
-                                            IF (LOAD THAT MATCHES HAS BID BUTTON ? == true):
-                                                BID HIGHER THAN CURRENT PRICE 
-                                                    THEN ACCEPT LOAD.
+                                                    IF (LOAD THAT MATCHES HAS BID BUTTON ? == true):
+                                                        BID HIGHER THAN CURRENT PRICE 
+                                                            THEN ACCEPT LOAD.
 
-                                            ELSE 
-                                                SEND LOAD DETAILS AND CONTACT TO ADMIN.
-                                                
-                                            IF (LOAD WAS AWARDED TO DRIVER) 
-                                                CHANGE ID AVAILABITY STATUS TO FUFILLED
-                                                NOTIFY ADMIN / DRIVER 
-                            ELSE
-                                REMOVE GROUP FROM AVALABILITY LIST
-                                CLOSE TAB
+                                                    ELSE 
+                                                        SEND LOAD DETAILS AND CONTACT TO ADMIN.
+                                                        
+                                                    IF (LOAD WAS AWARDED TO DRIVER) 
+                                                        CHANGE ID AVAILABITY STATUS TO FUFILLED
+                                                        NOTIFY ADMIN / DRIVER 
+                                    ELSE
+                                        REMOVE GROUP FROM AVALABILITY LIST
+                                    CLOSE TAB
 
+
+    ELSE (ASK USER TO UPDATE DRIVER'S AVAILABILITY )
                                 
 *****************BOOK LOADS FOR DRIVER ENDS ******************************************************                       
 
 
 
-FUNCTION GROUP_DIVER _AVAILABITY()
-    GET AVALABITY WITH NEAREST END TIME
-        GET ITS ZIP CODE RANGE
-    
-    
-        
-        
-        FOR EACH DRIVER AVAILABILITY_GROUP :
+SETINGS INPUT 
 
-            OPEN NEW WEB TAB 
+    "DISPATCHER"
+        "user_ID" : 22,
+        "email": ,
+        "password": ,
+        "phone": ,
+        "driver_id" : 2, 21, 2,
+        "LOAD PAY BIDUP PERCENTAGE":
+            {
+                FIRST_BIDUP : 0.1,
+                SECOND_BIDUP : 0.05,
+                THIRD_BIDUP : 0.025,
+                DRIVER_ID : 
+            }
+
+
+
+    "DRIVER PROFILE"
+        driver_ID : 21,
+        "PAY": {
+            "great": 700,
+            "good": 600,
+            "normal": 500,
+            "manage": 500
+        },
+        "grade_Settings": {
+            "tuesday": "5_8",
+            "wednesday": "normal",
+            "thursday": "5_8",
+            "friday": "normal",
+            "sartuday": "off",
+            "sunday": "off"
+        },
+
+
+
+
+    "DRIVER AVAILABILITY": 
+    [
+        "driver_ID": 21,
+        {
+            "id": 1,
+            "start": April 6, 2024 8:00:00 to April 6, 2024 18:00:00,
+            "close": April 7, 2024 8:00:00 to April 8, 2024 18:00:00,
+            "Origin_zipCode": 77083,
+            "destination_zipCode": 10001,
+            "timezone": "CT",
+            "status": "Expired",
+            "desired_Grade" : "Great",
+            "equipment": "flatbed 53",
+            "pay": 800,
+        }
+        {
+            "id": 2,
+            "start": April 6, 2024 8:00:00 to April 6, 2024 18:00:00,
+            "close": April 7, 2024 8:00:00 to April 8, 2024 18:00:00,
+            "Origin_zipCode": 77083,
+            "destination_zipCode": 10001,
+            "timezone": "CT",
+            "status": "Fufilled",
+            "desired_Grade" : "Good",
+            "equipment": "flatbed 53",
+            "pay": 700,
+        }
+        {
+            "id": 3,
+            "start": March 20, 2024 8:00:00 to March 20, 2024 18:00:00,
+            "close": March 23, 2024 8:00:00 to March 23, 2024 18:00:00,
+            "Origin_zipCode": 77083,
+            "destination_zipCode": 77033,
+            "timezone": "CT",
+            "status": "Expired",
+            "desired_Grade" : "Fair",
+            "equipment": "flatbed 53",
+            "pay": 600,
+        }
+        {
+            "id": 4,
+            "start": April 6, 2024 8:00:00 to April 6, 2024 18:00:00,
+            "close": April 7, 2024 8:00:00 to April 8, 2024 18:00:00,
+            "Origin_zipCode": 77083,
+            "destination_zipCode": 10001,
+            "timezone": "CT",
+            "status": "Open",
+            "desired_Grade" : "good",
+            "equipment": "flatbed 53",
+            "pay": 2500,
+        }
+        {
+            "id": 4,
+            "start": April 9, 2024 8:00:00 to April 9, 2024 18:00:00,
+            "close": April 10, 2024 8:00:00 to April 10, 2024 18:00:00,
+            "Origin_zipCode": 10021,
+            "destination_zipCode": 77007,
+            "timezone": "CT",
+            "status": "Open",
+            "desired_Grade" : "fair",
+            "equipment": "flatbed 53",
+            "pay": 1500,
+        }
+    ],
+        
+
+
+    FUFILLED LOADS
+
+
+    SHIPPER RECIVER RATTINGS 
+
+
+    DRIVER RATTINGS
+
+    CARRIER RATTINGS 
+
+    BROOKER RATTINGS
+
+
+
+
 
 
                                     
-
-
-
-
-
-
-
-
