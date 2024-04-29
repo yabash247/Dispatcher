@@ -166,6 +166,12 @@ SETINGS INPUT
     BROOKER RATTINGS
 
 
+    GRADE A LOAD 
+
+        PICKUP TIME IS OKAY 
+            DROP OFF TIME IS OKAY 
+
+                
 
 
 

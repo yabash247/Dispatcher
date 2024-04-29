@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "driver_id": 21,
+        "status": "expired",
+        "origin": 77406,
+        "pickup_period_start": "March 26, 2024 4:00:00",
+        "pickup_period_end": "March 26, 2024 11:00:00",
+        "destination": 77406,
+        "del_period_start": "March 27, 2024 18:00:00",
+        "del_period_end": "March 27, 2024 20:00:00"
+    },
+    {
+        "id": 4,
+        "driver_id": 21,
+        "status": "expired",
+        "origin": 77406,
+        "pickup_period_start": "April 1, 2024 4:00:00",
+        "pickup_period_end": "April 1, 2024 11:00:00",
+        "destination": 77406,
+        "del_period_start": "April 1, 2024 18:00:00",
+        "del_period_end": "April 1, 2024 20:00:00"
+    },
+    {
+        "id": 41,
+        "driver_id": 21,
+        "status": "open",
+        "origin": 77406,
+        "pickup_period_start": "May 06, 2024 1:00:00",
+        "pickup_period_end": "May 07, 2024 2:59:00",
+        "destination": 77406,
+        "del_period_start": "May 11, 2024 18:00:00",
+        "del_period_end": "May 21, 2024 20:00:00"
+    }
+]

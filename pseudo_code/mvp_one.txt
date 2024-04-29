@@ -21,3 +21,32 @@
                 ELSE IF
 
 
+
+//LOAD ANALYZER 
+
+    //MILLAGE 
+        //IF MILLAGE <80 AND PICKUP IS 
+
+        //MILLAGE ALLOWS FOR 2 DELIVERES (needs two loads)
+        // PAY IS 300min
+        //Millage : 80miles
+        // pickup is 30mile min 
+        //drop off is 30mile min 
+        // dentention not more than 2hours 
+        //pickup time / drop off time 
+            //early moring and same drop off
+            //late evening pickup and next day early moring drop off
+            //afternoon pickup and evening drop off 
+    
+    //MILLAGE ALLOWS FOR ONE DELIVERY (needs oNE loads)
+        // PAY IS 600min
+        //Millage : 175miles
+        // pickup is 30mile min, 
+        //drop off is closer to house
+        //drop off is 30mile min 
+        // dentention not more than 2hours 
+        //pickup time / drop off time 
+            //early moring and same drop off
+            //late evening pickup and next day early moring drop off.
+        
+    
